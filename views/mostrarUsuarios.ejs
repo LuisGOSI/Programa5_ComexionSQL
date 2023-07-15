@@ -1,0 +1,95 @@
+<%- include("templates/encabezado") %> <%- include("templates/menu") %>
+
+<style>
+  .styled-table {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: Arial, sans-serif;
+  }
+
+  .styled-table thead {
+    background-color: #ff5a5f;
+    color: white;
+  }
+
+  .styled-table th,
+  .styled-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .styled-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  .styled-table tbody tr:hover {
+    background-color: #f5f5f5;
+  }
+
+  .styled-table a {
+    color: #337ab7;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .styled-table a:hover {
+    color: #ff5a5f;
+  }
+
+  .styled-table th:nth-child(5),
+  .styled-table td:nth-child(5) {
+    text-align: center;
+  }
+
+  .styled-table .edit-link {
+    background-color: #39ac73;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+  }
+
+  .styled-table .edit-link:hover {
+    background-color: #1e8449;
+  }
+
+  .styled-table .delete-link {
+    background-color: #e74c3c;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+  }
+
+  .styled-table .delete-link:hover {
+    background-color: #c0392b;
+  }
+</style>
+
+<h1>Mostrar usuarios</h1>
+<table class="styled-table">
+  <thead>
+    <th>Id</th>
+    <th>Nombre</th>
+    <th>Usuario</th>
+    <th>Password</th>
+    <th>Editar</th>
+  </thead>
+  <tbody>
+    <% usuarios.forEach((usuario)=>{ %>
+    <tr>
+      <td><%=usuario.id%></td>
+      <td><%=usuario.nombre%></td>
+      <td><%=usuario.usuario%></td>
+      <td><%=usuario.password%></td>
+      <td>
+        <a href="/modificarUsuario/<%=usuario.id%>">Editar</a> /
+        <a href="/borrarUsuario/<%=usuario.id%>">Borrado fisico</a> /
+        <a href="/borrarUsuario2/<%=usuario.id%>">Borrado logico</a>
+      </td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+<%- include("templates/pie") %>
